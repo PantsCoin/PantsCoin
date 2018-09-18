@@ -48,7 +48,8 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "NY Times 05/Oct/2011 Steve Jobs, Apple’s Visionary, Dies at 56";
+    // 수정 포인트.
+    const char* pszTimestamp = "Bitcoin buster. The search for a more stable cryptocurrency";
     const CScript genesisOutputScript = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -101,7 +102,8 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_SEGWIT].nTimeout = 1517356801; // January 31st, 2018
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000002ebcfe2dd9eff82666");
+        // 수정 포인트. set Minimum Test Chain Work to 0x00 and regenerate Test Chain Genesis Block
+        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
 
         // By default assume that the signatures in ancestors of this block are valid.
         consensus.defaultAssumeValid = uint256S("0x59c9b9d3fec105bdc716d84caa7579503d5b05b73618d0bf2d5fa639f780a011"); //1353397
@@ -111,31 +113,38 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0xfb;
-        pchMessageStart[1] = 0xc0;
-        pchMessageStart[2] = 0xb6;
-        pchMessageStart[3] = 0xdb;
-        nDefaultPort = 9333;
+        // 수정 포인트. update 'magic number' in pchMessageStart to a unique value.
+        pchMessageStart[0] = 0xf0;
+        pchMessageStart[1] = 0xa7;
+        pchMessageStart[2] = 0xd1;
+        pchMessageStart[3] = 0xe7;
+        // 수정 포인트. update port number
+        nDefaultPort = 9638;
         nPruneAfterHeight = 100000;
 
-        genesis = CreateGenesisBlock(1317972665, 2084524493, 0x1e0ffff0, 1, 50 * COIN);
+        // 수정 포인트. update timestamp, nonce.
+        genesis = CreateGenesisBlock(1534866012, 2087470849, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x12a765e31ffd4059bada1e25190f6e98c99d9714d334efa41a195a7e7e04bfe2"));
-        assert(genesis.hashMerkleRoot == uint256S("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
+        // 수정 포인트. genesis hash, merkle hash.
+        assert(consensus.hashGenesisBlock == uint256S("0x60aeb667263472fb45b120846d7155ed8cb74d8198db5ccf8e401cd9343108f0"));
+        assert(genesis.hashMerkleRoot == uint256S("0x280ceb3d0067276ec9fa9d2d448688edb4e90400742e7d52d92c535a42e99800"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
-        vSeeds.emplace_back("seed-a.litecoin.loshan.co.uk", true);
-        vSeeds.emplace_back("dnsseed.thrasher.io", true);
-        vSeeds.emplace_back("dnsseed.litecointools.com", true);
-        vSeeds.emplace_back("dnsseed.litecoinpool.org", true);
-        vSeeds.emplace_back("dnsseed.koin-project.com", false);
+        // 수정 포인트. update dnsseeds and seednodes.
+        vSeeds.emplace_back("dnsseed.pantsco.in", true);
+        // vSeeds.emplace_back("seed-a.pantscoin.loshan.co.uk", true);
+        // vSeeds.emplace_back("dnsseed.thrasher.io", true);
+        // vSeeds.emplace_back("dnsseed.pantscointools.com", true);
+        // vSeeds.emplace_back("dnsseed.pantscoinpool.org", true);
+        // vSeeds.emplace_back("dnsseed.koin-project.com", false);
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,48);
+        // 수정 포인트. update base58Prefixes to unique values. (stealth addresses)
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,55); // 수정. https://en.bitcoin.it/wiki/List_of_address_prefixes
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
         base58Prefixes[SCRIPT_ADDRESS2] = std::vector<unsigned char>(1,50);
-        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,176);
-        base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
-        base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
+        base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,56); // 수정. https://en.bitcoin.it/wiki/List_of_address_prefixes
+        base58Prefixes[EXT_PUBLIC_KEY] = {0xcd, 0x88, 0xB2, 0x1E}; // 수정.
+        base58Prefixes[EXT_SECRET_KEY] = {0xcd, 0x88, 0xAD, 0xE4}; // 수정.
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
 
@@ -145,6 +154,9 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
+                // 수정 포인트. insert point with genesis hash.
+                {  0, uint256S("0x60aeb667263472fb45b120846d7155ed8cb74d8198db5ccf8e401cd9343108f0")},
+                /*
                 {  1500, uint256S("0x841a2965955dd288cfa707a755d05a54e45f8bd476835ec9af4402a2b59a2967")},
                 {  4032, uint256S("0x9ce90e427198fc0ef05e5905ce3503725b80e26afd35a987965fd7e3d9cf0846")},
                 {  8064, uint256S("0xeb984353fc5190f210651f150c40b8a4bab9eeeff0b729fcb3987da694430d70")},
@@ -161,15 +173,17 @@ public:
                 {456000, uint256S("0xbf34f71cc6366cd487930d06be22f897e34ca6a40501ac7d401be32456372004")},
                 {638902, uint256S("0x15238656e8ec63d28de29a8c75fcf3a5819afc953dcd9cc45cecc53baec74f38")},
                 {721000, uint256S("0x198a7b4de1df9478e2463bd99d75b714eab235a2e63e741641dc8a759a9840e5")},
+                */
             }
         };
 
         chainTxData = ChainTxData{
             // Data as of block 59c9b9d3fec105bdc716d84caa7579503d5b05b73618d0bf2d5fa639f780a011 (height 1353397).
-            1516406833, // * UNIX timestamp of last known number of transactions
-            19831879,  // * total number of transactions between genesis and that timestamp
+            // 수정 포인트. update unix timestamp.
+            1534866012, // * UNIX timestamp of last known number of transactions
+            0,  // * total number of transactions between genesis and that timestamp
                     //   (the tx=... number in the SetBestChain debug.log lines)
-            0.06     // * estimated number of transactions per second after that timestamp
+            0.0     // * estimated number of transactions per second after that timestamp
         };
     }
 };
@@ -220,16 +234,18 @@ public:
         nDefaultPort = 19335;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1486949366, 293345, 0x1e0ffff0, 1, 50 * COIN);
+        // 수졍 포인트. update nonce for test.
+        genesis = CreateGenesisBlock(1486949366, 471301, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x4966625a4b2851d9fdee139e56211a0d88575f59ed816ff5e6a63deb4e3e29a0"));
-        assert(genesis.hashMerkleRoot == uint256S("0x97ddfbbae6be97fd6cdf3e7ca13232a3afff2353e29badfab7f73011edd4ced9"));
+        // 수정 포인트. update genesis hash, merkle hash for test.
+        assert(consensus.hashGenesisBlock == uint256S("0xd686c51a8ba8b81e4173096785e458253105e1a4d637fd7824893cd2691ee71f"));
+        assert(genesis.hashMerkleRoot == uint256S("0x805d8d176abe872f5cd40b558869a0d25ed02ae471fa33f80185443e5ca9cb40"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
         // nodes with support for servicebits filtering should be at the top
-        vSeeds.emplace_back("testnet-seed.litecointools.com", true);
-        vSeeds.emplace_back("seed-b.litecoin.loshan.co.uk", true);
+        vSeeds.emplace_back("testnet-seed.pantscointools.com", true);
+        vSeeds.emplace_back("seed-b.pantscoin.loshan.co.uk", true);
         vSeeds.emplace_back("dnsseed-testnet.thrasher.io", true);
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);

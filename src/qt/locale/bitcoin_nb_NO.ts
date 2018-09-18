@@ -62,12 +62,12 @@
         <translation>Mottager adresser</translation>
     </message>
     <message>
-        <source>These are your Litecoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Dette er dine Litecoin adresser for å sende  å sende betalinger. Husk å sjekke beløp og mottager adresser før du sender mynter.</translation>
+        <source>These are your Pantscoin addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Dette er dine Pantscoin adresser for å sende  å sende betalinger. Husk å sjekke beløp og mottager adresser før du sender mynter.</translation>
     </message>
     <message>
-        <source>These are your Litecoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Dette er dine Litecoin adresse for å motta betalinger. Det er anbefalt å bruke en ny mottager adresse for hver transaksjon.</translation>
+        <source>These are your Pantscoin addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Dette er dine Pantscoin adresse for å motta betalinger. Det er anbefalt å bruke en ny mottager adresse for hver transaksjon.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -180,8 +180,8 @@
         <translation>Lommeboken er kryptert</translation>
     </message>
     <message>
-        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your litecoins from being stolen by malware infecting your computer.</source>
-        <translation>%1 vil nå lukkes for å fullføre krypteringsprosessen. Husk at å kryptere lommeboken ikke kan beskytte dine litecoin fullstendig fra å bli stjålet av skadelig programvare som har infisert datamaskinen din.</translation>
+        <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your pantscoins from being stolen by malware infecting your computer.</source>
+        <translation>%1 vil nå lukkes for å fullføre krypteringsprosessen. Husk at å kryptere lommeboken ikke kan beskytte dine pantscoin fullstendig fra å bli stjålet av skadelig programvare som har infisert datamaskinen din.</translation>
     </message>
     <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
@@ -338,8 +338,8 @@
         <translation>Reindekserer blokker på disken</translation>
     </message>
     <message>
-        <source>Send coins to a Litecoin address</source>
-        <translation>Send mynter til en Litecoin adresse</translation>
+        <source>Send coins to a Pantscoin address</source>
+        <translation>Send mynter til en Pantscoin adresse</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -362,8 +362,8 @@
         <translation>&amp;Verifiser meldingen...</translation>
     </message>
     <message>
-        <source>Litecoin</source>
-        <translation>Litecoin</translation>
+        <source>Pantscoin</source>
+        <translation>Pantscoin</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -390,12 +390,12 @@
         <translation>Krypter de private nøklene som tilhører lommeboken din</translation>
     </message>
     <message>
-        <source>Sign messages with your Litecoin addresses to prove you own them</source>
-        <translation>Signer meldingene med Litecoin adresse for å bevise at diu eier dem</translation>
+        <source>Sign messages with your Pantscoin addresses to prove you own them</source>
+        <translation>Signer meldingene med Pantscoin adresse for å bevise at diu eier dem</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Litecoin addresses</source>
-        <translation>Verifiser meldinger for å sikre at de ble signert med en angitt Litecoin adresse</translation>
+        <source>Verify messages to ensure they were signed with specified Pantscoin addresses</source>
+        <translation>Verifiser meldinger for å sikre at de ble signert med en angitt Pantscoin adresse</translation>
     </message>
     <message>
         <source>&amp;File</source>

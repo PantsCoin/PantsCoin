@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "__locale": "cpp",
+        "ios": "cpp",
+        "__split_buffer": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "vector": "cpp"
+    }
+}
