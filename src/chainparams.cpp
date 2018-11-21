@@ -126,8 +126,8 @@ public:
         genesis = CreateGenesisBlock(1542782252, 2085219355, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         // 수정 포인트. genesis hash, merkle hash.
-        assert(consensus.hashGenesisBlock == uint256S("0x60aeb667263472fb45b120846d7155ed8cb74d8198db5ccf8e401cd9343108f0"));
-        assert(genesis.hashMerkleRoot == uint256S("0x280ceb3d0067276ec9fa9d2d448688edb4e90400742e7d52d92c535a42e99800"));
+        assert(consensus.hashGenesisBlock == uint256S("0x70d2178097e9da0dc38fc1f5fc50190fe7699861b2b4a20ecd438bf88cdfe163"));
+        assert(genesis.hashMerkleRoot == uint256S("0xf90470946e89ef3cf7ef333e6b2e3749b3cf3699e259ce6d91fc9e8b7a2921ad"));
 
         // Note that of those with the service bits flag, most only support a subset of possible options
         // 수정 포인트. update dnsseeds and seednodes.
@@ -180,7 +180,7 @@ public:
         chainTxData = ChainTxData{
             // Data as of block 59c9b9d3fec105bdc716d84caa7579503d5b05b73618d0bf2d5fa639f780a011 (height 1353397).
             // 수정 포인트. update unix timestamp.
-            1534866012, // * UNIX timestamp of last known number of transactions
+            1542782252, // * UNIX timestamp of last known number of transactions
             0,  // * total number of transactions between genesis and that timestamp
                     //   (the tx=... number in the SetBestChain debug.log lines)
             0.0     // * estimated number of transactions per second after that timestamp
