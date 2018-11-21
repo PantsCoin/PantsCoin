@@ -49,7 +49,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     // 수정 포인트.
-    const char* pszTimestamp = "Bitcoin buster. The search for a more stable cryptocurrency";
+    const char* pszTimestamp = "NY Times 20/Nov/2018 In Extraordinary Statement, Trump Stands With Saudis Despite Khashoggi Killing";
     const CScript genesisOutputScript = CScript() << ParseHex("040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -123,7 +123,7 @@ public:
         nPruneAfterHeight = 100000;
 
         // 수정 포인트. update timestamp, nonce.
-        genesis = CreateGenesisBlock(1534866012, 2087470849, 0x1e0ffff0, 1, 50 * COIN);
+        genesis = CreateGenesisBlock(1542782252, 2085219355, 0x1e0ffff0, 1, 50 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
         // 수정 포인트. genesis hash, merkle hash.
         assert(consensus.hashGenesisBlock == uint256S("0x60aeb667263472fb45b120846d7155ed8cb74d8198db5ccf8e401cd9343108f0"));
